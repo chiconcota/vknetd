@@ -34,3 +34,13 @@ Nơi lưu trữ tất cả các Quyết Định Kỹ Thuật Lõi (Core Technica
 - **Bối cảnh:** Chạy daemon bằng Udev rule tại User space để tiện cài đặt và quản lý, tránh phụ thuộc vào sudo root.
 - **Quyết định:** Sử dụng Udev rule `99-vknetd.rules` cấp quyền `0660` nhóm `input` cho `/dev/uinput` và `/dev/input/event*`.
 - **Kết quả:** Đảm bảo `vknetd` hoạt động ở tầng phần cứng `evdev` mà không cần quyền root khi chạy thông thường.
+
+---
+
+### [2026-07-23] Quyết định 005: Kiến trúc Multi-Language Engine Tách biệt (Pluggable IME Traits)
+- **Bối cảnh:** Mở rộng tầm nhìn dự án thành bộ gõ Kernel đa ngôn ngữ (Tiếng Việt, Tiếng Nhật Romaji/Kanji, Tiếng Trung Pinyin...), tạo điều kiện cho cộng đồng Open-Source cùng đóng góp Module sau này.
+- **Quyết định:** Thiết kế Lớp Engine Layer theo mô hình Plugin / Trait interface trong Rust (ví dụ `trait ImeEngine`):
+  1. `VietnameseEngine` (Khởi tạo trước): Xử lý máy trạng thái Telex/VNI.
+  2. `JapaneseEngine` (Thiết kế mở cho tương lai): Nhúng lõi từ điển `mozc-core` / `anthy`, gửi sự kiện qua IPC Socket để `vknetd-ui` bật Popup Candidate Window chọn chữ Kanji.
+- **Kết quả:** `vknetd` không bị đóng khung duy nhất vào tiếng Việt, mở rộng linh hoạt cho cộng đồng phát triển.
+
