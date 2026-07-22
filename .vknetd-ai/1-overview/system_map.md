@@ -3,7 +3,8 @@
 ## 📌 Trạng thái Dự án: 🟡 Phase 1 - Proof of Concept (Kernel Layer)
 
 ## 🎯 Mục tiêu Kiến trúc
-Tạo bộ gõ tiếng Việt tự thân (`vknetd`) độc lập hoàn toàn, chạy ở tầng Kernel/Input Subsystem thông qua Linux `evdev` và `/dev/uinput`, đạt tốc độ $<1\text{ms}$, không preedit gạch chân, không phụ thuộc IBus hay Fcitx5.
+Tạo bộ gõ tiếng Việt tự thân (`vknetd`) Vietnamese Kernel Native Input Daemon.
+Độc lập hoàn toàn, chạy ở tầng Kernel/Input Subsystem thông qua Linux `evdev` và `/dev/uinput`, đạt tốc độ $<1\text{ms}$, không preedit gạch chân, không phụ thuộc IBus hay Fcitx5.
 
 ## 🧩 Danh mục Module (Module Registry)
 
